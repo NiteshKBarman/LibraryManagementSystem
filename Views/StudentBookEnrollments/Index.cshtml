@@ -1,0 +1,79 @@
+﻿@*<script src="~/js/AngularJs.js"></script>*@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js" integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/js/StudentBookEnrollment/Add.js"></script>
+<script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<div ng-app="studentBookEnrollment" ng-controller="myCtrl" ng-init="init(
+@Newtonsoft.Json.JsonConvert.SerializeObject(ViewData["studentData"]),
+@Newtonsoft.Json.JsonConvert.SerializeObject( ViewData["bookData"]),
+@Newtonsoft.Json.JsonConvert.SerializeObject( ViewData["studentBookEnrollment"])
+
+)">
+    <div class="box">
+        <div class="box-header">
+            <h5>Student Book Enrollment</h5>
+        </div>
+        <div class="box-body">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Student Name</label>
+                            <select ng-model="selectedName" class="form-control" ng-change="onChangeStudentName()"
+                                    ng-options="x.Name for x in studentList">
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="btn btn-success" type="button" ng-click="onClickAddBtn()" value="Add" />
+                            <label>Book</label>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" ng-model="checkValue"
+                                                   ng-change="onClickCheckBox()" />
+                                        </th>
+                                        <th>Book Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="data in bookList">
+                                        <td><input type="checkbox" ng-model="data.bookCheck" /></td>
+                                        <td>{{data.Name}}</td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-12">
+                <h3>Book List</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Book</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in displayList">
+                            <td>{{data.StudentName}}</td>
+                            <td>{{data.BookName}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="box-footer">
+            <input type="button" value="Save" style="float:right" ng-click="onClickSaveBtn()" />
+        </div>
+
+    </div>
+
+</div>
