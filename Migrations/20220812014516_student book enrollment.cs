@@ -24,7 +24,7 @@ namespace LibraryManagementSystem.Migrations
                     table.PrimaryKey("PK_StudentBookEnrollment", x => x.Id);
                 });
         }
-
+        
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

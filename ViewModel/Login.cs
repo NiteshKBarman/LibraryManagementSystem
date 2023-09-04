@@ -4,6 +4,7 @@ namespace LibraryManagementSystem.ViewModel
 {
     public class Login
     {
+        //initial
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Enter a Gmail")]
